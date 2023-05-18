@@ -3,7 +3,7 @@ import React from 'react'
 import IL_Oops from '../../assets/ilustrasi/oops.png'
 import { ms } from 'react-native-size-matters'
 
-export default function Promo() {
+export default function SmartClean() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Image source={IL_Oops} />

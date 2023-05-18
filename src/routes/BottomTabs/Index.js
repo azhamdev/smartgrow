@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Home from '../../screens/home/home';
-import Edu from '../../screens/Edu/edu';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 import Promo from '../../screens/Promo/Promo';
-import Blog from '../../screens/Blog/Blog';
 import SmartMaps from '../../screens/SmartMaps/SmartMaps';
+import Home from '../../screens/home/home';
 
 const Tab = createBottomTabNavigator();
 
