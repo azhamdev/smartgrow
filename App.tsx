@@ -14,6 +14,8 @@ import SmartFood from './src/screens/SmartFood/SmartFood';
 import SmartTech from './src/screens/SmartTech/SmartTech';
 import SmartClean from './src/screens/SmartClean/SmartClean';
 import SmartEvent from './src/screens/SmartEvent/SmartEvent';
+import Blog from './src/screens/Blog/Blog';
+import IntroEdu from './src/screens/Edu/Intro';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -28,6 +30,11 @@ export default function App() {
         <Stack.Screen
           name="Edu"
           component={Edu}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="IntroEdu"
+          component={IntroEdu}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -63,6 +70,11 @@ export default function App() {
         <Stack.Screen
           name="SmartEvent"
           component={SmartEvent}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SmartBlog"
+          component={Blog}
           options={{headerShown: false}}
         />
         <Stack.Screen

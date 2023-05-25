@@ -3,18 +3,14 @@ import React from 'react'
 import { ms } from 'react-native-size-matters'
 
 
-export default function Course({ category, title, subtitle, image }) {
+export default function Course({ title, image }) {
   return (
     <TouchableOpacity style={styles.courseWrapper}>
       <View style={styles.imageWrapper}>
         <Image source={image} style={styles.imageCourse} />
       </View>
       <View style={styles.descWrapper}>
-        <View style={styles.category}>
-          <Text>{category}</Text>
-        </View>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subTitle}>{subtitle}</Text>
       </View>
     </TouchableOpacity>
   )
@@ -44,6 +40,7 @@ const styles = StyleSheet.create({
   descWrapper: {
     marginLeft: ms(12),
     flex: 1,
+    justifyContent: 'center'
   },
   category: {
     backgroundColor: '#EEE',

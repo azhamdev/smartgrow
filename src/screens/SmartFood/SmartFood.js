@@ -27,7 +27,7 @@ export default function SmartFood() {
       <Navbar source={IL_Siram} text={"Dapatkan alat untuk kebunmu"} />
       <View style={styles.contentWrapper}>
         <View style={styles.productContainer}>
-          <Product source={IL_Melon} price={67000} name={"Penyiram Tanaman Rumah"} onPress={sendMessage} />
+          <Product source={IL_Melon} price={40000} name={"Melon"} onPress={sendMessage} />
         </View>
       </View>
     </View>

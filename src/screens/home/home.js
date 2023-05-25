@@ -15,6 +15,7 @@ import IC_Event from '../../assets/icons/event.png'
 
 //images
 import IL_Chili from '../../assets/ilustrasi/chili.jpg'
+import IL_Pot from '../../assets/ilustrasi/ilustrasi2.jpg'
 import Sample from '../../assets/ilustrasi/farm.jpg'
 import Smoothies from '../../assets/ilustrasi/promo1.png'
 import Fruit from '../../assets/ilustrasi/promo2.png'
@@ -43,7 +44,7 @@ export default function Home() {
           <Image source={Sample} style={styles.headerImage} />
         </View>
         <View style={styles.containerMenu}>
-          <Menu source={IC_Video} title={"Smart Edu"} onPress={() => Navigation.navigate('Edu')} />
+          <Menu source={IC_Video} title={"Smart Edu"} onPress={() => Navigation.navigate('IntroEdu')} />
           <Menu source={IC_Plant} title={"Smart Plant"} onPress={() => Navigation.navigate('SmartPlant')} />
           <Menu source={IC_Tool} title={"Smart Kit"} onPress={() => Navigation.navigate('SmartKit')} />
           <Menu source={IC_Maps} title={"Smart Maps"} onPress={() => Navigation.navigate('SmartMaps')} />
@@ -53,6 +54,7 @@ export default function Home() {
           <Menu source={IC_Drink} title={"Smart Food"} onPress={() => Navigation.navigate('SmartFood')} />
           <Menu source={IC_Tech} title={"Smart Tech"} onPress={() => Navigation.navigate('SmartTech')} />
           <Menu source={IC_Event} title={"Smart Event"} onPress={() => Navigation.navigate('SmartEvent')} />
+          {/* <Menu source={IC_Event} title={"Blog"} onPress={() => Navigation.navigate('SmartBlog')} /> */}
         </View>
         <View style={styles.promoContainer}>
           <Title name={"Belanja makin hemat 🤑"} subtitle={"Dapetin diskon dan harga spesialnya sekarang sebelum kehabisan!"} />
@@ -63,8 +65,8 @@ export default function Home() {
         </ScrollView>
         <View style={styles.mycourseContainer}>
           <Title name={"Belajar makin mudah"} subtitle={"Dapetin ilmu tentang pertanian sekarang sebelum terlambat!"} />
-          <Course image={IL_Chili} title={"Cara menanam cabai bagi pemula"} subtitle={"Begini cara menanam cabai supaya hasil maksimal"} category={"Vegetables"} />
-          <Course image={IL_Chili} title={"Cara menanam cabai bagi pemula"} subtitle={"Begini cara menanam cabai supaya hasil maksimal"} category={"Vegetables"} />
+          <Course image={IL_Chili} title={"Teknik menanam cabai mudah hasil melimpah"} />
+          <Course image={IL_Pot} title={"Cara menyiapkan media tanam dari bahan bekas"} />
         </View>
       </ScrollView>
     </View>
