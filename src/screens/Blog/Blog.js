@@ -5,15 +5,15 @@ import { ms } from 'react-native-size-matters'
 export default function Blog() {
   const [datas, setData] = useState([])
 
-  const ambilData = async () => {
-    const res = await (await fetch('https://pdlblogs.pucukdaunlestari.com/api/post')).json()
-    setData(res.data)
-    console.log(datas)
-  }
+  // const ambilData = async () => {
+  //   const res = await (await fetch('https://pdlblogs.pucukdaunlestari.com/api/post')).json()
+  //   setData(res.data)
+  //   console.log(datas)
+  // }
 
-  useEffect(() => {
-    ambilData();
-  }, [])
+  // useEffect(() => {
+  //   ambilData();
+  // }, [])
   return (
     <ScrollView>
       {

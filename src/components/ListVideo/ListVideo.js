@@ -4,69 +4,68 @@ import { ms } from 'react-native-size-matters'
 
 import IC_Play from '../../assets/icons/play.png'
 
+
 export default function ListVideo({ source, title, onPress }) {
   return (
-    <View>
-      <TouchableOpacity style={styles.contentWrapper} onPress={onPress}>
-        <View style={styles.boxVideo}>
-          <Image source={source} style={styles.thumbnail} />
-        </View>
-        <View style={styles.boxDesc}>
-          <Text style={styles.text}>{title}</Text>
-          <View style={styles.tonton}>
-            <Text>
-              Tonton video
-            </Text>
-            <Image source={IC_Play} style={styles.icPlay} />
-          </View>
-        </View>
+    <View style={styles.contentWrapper}>
+      <View style={styles.boxVideo}>
+        <Image source={source} style={styles.thumbnail} />
+      </View>
+      <View style={styles.textBox}>
+        <Text style={styles.title}>
+          {title}
+        </Text>
+      </View>
+      <TouchableOpacity onPress={onPress}>
+        <Image source={IC_Play} style={styles.play} />
       </TouchableOpacity>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  boxVideo: {
-    backgroundColor: "#E1E1E1",
-    width: ms(100),
-    height: ms(100),
-    borderRadius: ms(12)
-  },
   contentWrapper: {
+    backgroundColor: '#FFF',
+    width: '100%',
+    height: ms(94),
+    justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
-    borderBottomWidth: ms(0.6),
-    borderColor: '#A1a1a1',
-    paddingBottom: ms(12),
-    borderRadius: ms(7),
-    marginBottom: ms(20)
+    paddingHorizontal: ms(10),
+    borderRadius: ms(10),
+    shadowColor: "#acacac",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.17,
+    shadowRadius: 3.05,
+    elevation: 4,
+    marginBottom: ms(18)
+  },
+  boxVideo: {
+    height: ms(80),
+    width: ms(80),
+    backgroundColor: 'grey',
+    borderRadius: ms(28)
+  },
+  textBox: {
+    width: ms(158)
+  },
+  play: {
+    width: ms(45),
+    height: ms(45)
   },
   thumbnail: {
     height: undefined,
     width: '100%',
-    resizeMode: 'cover',
     aspectRatio: 1,
+    resizeMode: 'cover',
+    borderRadius: ms(28)
   },
-  boxDesc: {
-    paddingVertical: ms(16),
-    paddingLeft: ms(14),
-    paddingRight: ms(24),
-  },
-  text: {
-    fontSize: ms(18),
-    maxWidth: ms(240),
-    fontWeight: '700',
-    color: '#000',
-  },
-  tonton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    paddingRight: ms(24),
-    marginTop: ms(12)
-  },
-  icPlay: {
-    width: ms(20),
-    height: ms(20),
-    marginLeft: ms(10)
+  title: {
+    fontSize: ms(14),
+    fontWeight: '600',
+    color: '#000'
   }
 })

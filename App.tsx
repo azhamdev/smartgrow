@@ -1,21 +1,23 @@
-import 'react-native-gesture-handler';
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import Home from './src/screens/home/home';
-import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import Edu from './src/screens/Edu/edu';
+import {createStackNavigator} from '@react-navigation/stack';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import 'react-native-gesture-handler';
 import BottomTab from './src/routes/BottomTabs/Index';
-import SmartMaps from './src/screens/SmartMaps/SmartMaps';
+import Blog from './src/screens/Blog/Blog';
+import Praktik from './src/screens/Category-Course/Praktik';
+import Teori from './src/screens/Category-Course/Teori';
 import DetailVideo from './src/screens/DetailVideo/DetailVideo';
-import SmartPlant from './src/screens/SmartPlant/SmartPlant';
-import SmartKit from './src/screens/SmartKit/SmartKit';
-import SmartFood from './src/screens/SmartFood/SmartFood';
-import SmartTech from './src/screens/SmartTech/SmartTech';
+import IntroEdu from './src/screens/Edu/Intro';
+import Edu from './src/screens/Edu/edu';
 import SmartClean from './src/screens/SmartClean/SmartClean';
 import SmartEvent from './src/screens/SmartEvent/SmartEvent';
-import Blog from './src/screens/Blog/Blog';
-import IntroEdu from './src/screens/Edu/Intro';
+import SmartFood from './src/screens/SmartFood/SmartFood';
+import SmartKit from './src/screens/SmartKit/SmartKit';
+import SmartMaps from './src/screens/SmartMaps/SmartMaps';
+import SmartPlant from './src/screens/SmartPlant/SmartPlant';
+import SmartTech from './src/screens/SmartTech/SmartTech';
+import Home from './src/screens/home/home';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -35,6 +37,16 @@ export default function App() {
         <Stack.Screen
           name="IntroEdu"
           component={IntroEdu}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="TeoriEdu"
+          component={Teori}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PraktikEdu"
+          component={Praktik}
           options={{headerShown: false}}
         />
         <Stack.Screen
