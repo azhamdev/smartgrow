@@ -10,10 +10,12 @@ import IL_Ciplukan from '../../assets/ilustrasi/ciplukan.jpg'
 import Title from '../../components/title/title'
 import Header from '../../components/Header/Header'
 import axios from 'axios'
+import { useNavigation } from '@react-navigation/native'
 
 
 export default function SmartPlant() {
   const [products, setProducts] = useState([])
+  const Navigation = useNavigation();
 
   useEffect(() => {
     getProducts();
@@ -27,7 +29,7 @@ export default function SmartPlant() {
 
   const sendMessage = () => {
     let url =
-      'whatsapp://send?text=saya mau pesan' + '&phone=62' + 895379181484;
+      'whatsapp://send?text=saya mau pesan' + '&phone=62' + `${products.contact}`;
 
     Linking.openURL(url)
       .then((data) => {
@@ -48,7 +50,19 @@ export default function SmartPlant() {
         <View style={styles.productContainer}>
           {products.map((product) => (
             <View key={product.id}>
-              <Product mitra={product.mitra} source={{ uri: `${product.image}` }} price={product.price} name={product.title} onPress={sendMessage} />
+              <Product
+                mitra={product.mitra}
+                source={{ uri: `${product.image}` }}
+                price={product.price}
+                name={product.title}
+                onPress={() => Navigation.navigate('Detail', {
+                  mitra: `${product.mitra}`,
+                  source: `${product.image}`,
+                  price: `${product.price}`,
+                  name: `${product.title}`,
+                  contact: `${product.contact}`,
+                  desc: `${product.description}`
+                })} />
             </View>
           ))}
         </View>

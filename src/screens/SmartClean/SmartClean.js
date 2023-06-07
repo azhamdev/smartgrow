@@ -7,7 +7,7 @@ import { ms } from 'react-native-size-matters'
 export default function SmartClean() {
   const sendMessage = () => {
     let url =
-      'whatsapp://send?text=saya mau membersihkan kebun saya' + '&phone=62' + 895379181484;
+      'whatsapp://send?text=saya mau membersihkan kebun saya' + '&phone=62' + 89677201587;
 
     Linking.openURL(url)
       .then((data) => {

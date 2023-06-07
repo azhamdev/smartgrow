@@ -6,10 +6,12 @@ import { ms } from 'react-native-size-matters'
 import IL_Event from '../../assets/ilustrasi/smartevent.png'
 import Title from '../../components/title/title'
 import axios from 'axios'
+import { useNavigation } from '@react-navigation/native'
 
 
 export default function SmartEvent() {
   const [products, setProducts] = useState([])
+  const Navigation = useNavigation();
 
   useEffect(() => {
     getProducts();
@@ -20,18 +22,6 @@ export default function SmartEvent() {
     setProducts(response.data.data)
   }
 
-  const sendMessage = () => {
-    let url =
-      'whatsapp://send?text=saya mau pesan' + '&phone=62' + 895379181484;
-
-    Linking.openURL(url)
-      .then((data) => {
-        console.log('WhatsApp Opened');
-      })
-      .catch(() => {
-        alert('Make sure Whatsapp installed on your device');
-      });
-  }
   return (
     <ScrollView style={{ flex: 1 }}>
       <Navbar text={"Smart Event"} />
@@ -62,7 +52,16 @@ export default function SmartEvent() {
                     <View style={{
                       alignItems: 'flex-end'
                     }}>
-                      <TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => Navigation.navigate('Detail', {
+                          mitra: `${product.mitra}`,
+                          source: `${product.image}`,
+                          price: `${product.price}`,
+                          name: `${product.title}`,
+                          contact: `${product.contact}`,
+                          desc: `${product.description}`
+                        })}
+                      >
                         <Text style={styles.linkEvent}>
                           Lihat Detail
                         </Text>
@@ -73,33 +72,6 @@ export default function SmartEvent() {
               </View>
             ))
           }
-          <View style={styles.productWrapper}>
-            <View >
-              <Image source={IL_Event} style={styles.imageWrapper} />
-            </View>
-            <View style={
-              {
-                flex: 1,
-                justifyContent: 'space-between',
-                paddingVertical: ms(10)
-              }
-            }>
-              <View >
-                <Text style={styles.eventTitle}>
-                  Pelatihan Holticultura Tanaman Tahunan
-                </Text>
-              </View>
-              <View style={{
-                alignItems: 'flex-end'
-              }}>
-                <TouchableOpacity>
-                  <Text style={styles.linkEvent}>
-                    Lihat Detail
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
         </View>
       </View>
     </ScrollView>
@@ -135,13 +107,13 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: ms(12),
   },
   eventTitle: {
-    fontSize: ms(14),
+    fontSize: ms(18),
     color: "#000",
     fontWeight: '700',
     marginHorizontal: ms(12)
   },
   linkEvent: {
-    fontSize: ms(10),
+    fontSize: ms(14),
     color: '#609966',
     marginHorizontal: ms(12)
   }

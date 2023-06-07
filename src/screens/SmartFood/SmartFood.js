@@ -12,11 +12,13 @@ import Smoothies from '../../assets/ilustrasi/promo1.png'
 import Fruit from '../../assets/ilustrasi/promo2.png'
 import Title from '../../components/title/title'
 import axios from 'axios'
+import { useNavigation } from '@react-navigation/native'
 
 
 
 export default function SmartFood() {
   const [products, setProducts] = useState([])
+  const Navigation = useNavigation();
 
   useEffect(() => {
     getProducts();
@@ -29,7 +31,7 @@ export default function SmartFood() {
 
   const sendMessage = () => {
     let url =
-      'whatsapp://send?text=saya mau pesan' + '&phone=62' + 895379181484;
+      'whatsapp://send?text=saya mau pesan' + '&phone=62' + `${products.contact}`;
 
     Linking.openURL(url)
       .then((data) => {
@@ -53,8 +55,20 @@ export default function SmartFood() {
         <View style={styles.productContainer}>
           {
             products.map((product) => (
-              <View>
-                <Product source={{ uri: `${product.image}` }} mitra={product.mitra} name={product.title} price={product.price} />
+              <View key={product.id}>
+                <Product
+                  onPress={() => Navigation.navigate('Detail', {
+                    mitra: `${product.mitra}`,
+                    source: `${product.image}`,
+                    price: `${product.price}`,
+                    name: `${product.title}`,
+                    contact: `${product.contact}`,
+                    desc: `${product.description}`
+                  })}
+                  source={{ uri: `${product.image}` }}
+                  mitra={product.mitra}
+                  name={product.title}
+                  price={product.price} />
               </View>
             ))
           }

@@ -10,10 +10,12 @@ import IL_PenyiramOtomatis from '../../assets/ilustrasi/penyiramOtomatis.png'
 import Title from '../../components/title/title'
 import Header from '../../components/Header/Header'
 import axios from 'axios'
+import { useNavigation } from '@react-navigation/native'
 
 
 export default function SmartTech() {
   const [products, setProducts] = useState([])
+  const Navigation = useNavigation()
 
   useEffect(() => {
     getProducts();
@@ -24,16 +26,16 @@ export default function SmartTech() {
     setProducts(res.data.data)
   }
 
-  const sendMessage = () => {
+  const sendMessage = ({ contact }) => {
     let url =
-      'whatsapp://send?text=saya mau pesan' + '&phone=62' + 895379181484;
+      'whatsapp://send?text=saya mau pesan' + '&phone=62' + `895379181484`;
 
     Linking.openURL(url)
       .then((data) => {
         console.log('WhatsApp Opened');
       })
       .catch(() => {
-        alert('Make sure Whatsapp installed on your device');
+        alert(`Make sure Whatsapp installed on your device`);
       });
   }
   return (
@@ -48,12 +50,23 @@ export default function SmartTech() {
           {
             products.map((product) => (
               <View key={product.id}>
-                <Product mitra={product.mitra} source={{ uri: `${product.image}` }} price={product.price} name={product.title} onPress={sendMessage} />
+                <Product
+                  mitra={product.mitra}
+                  source={{ uri: `${product.image}` }}
+                  price={product.price}
+                  name={product.title}
+                  onPress={() => Navigation.navigate('Detail', {
+                    mitra: `${product.mitra}`,
+                    source: `${product.image}`,
+                    price: `${product.price}`,
+                    name: `${product.title}`,
+                    contact: `${product.contact}`,
+                    desc: `${product.description}`
+                  })}
+                />
               </View>
             ))
           }
-          <Product mitra={"Sahabat Tani"} source={IL_Monitoring} price={1330000} name={"Monitoring Plant System"} onPress={sendMessage} />
-          <Product mitra={"Sahabat Tani"} source={IL_Monitoring} price={1330000} name={"Monitoring Plant System"} onPress={sendMessage} />
         </View>
       </View>
     </ScrollView>

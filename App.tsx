@@ -4,7 +4,6 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import 'react-native-gesture-handler';
 import BottomTab from './src/routes/BottomTabs/Index';
-import Blog from './src/screens/Blog/Blog';
 import Praktik from './src/screens/Category-Course/Praktik';
 import Teori from './src/screens/Category-Course/Teori';
 import DetailVideo from './src/screens/DetailVideo/DetailVideo';
@@ -19,6 +18,7 @@ import SmartPlant from './src/screens/SmartPlant/SmartPlant';
 import SmartTech from './src/screens/SmartTech/SmartTech';
 import Home from './src/screens/home/home';
 import IntroClean from './src/screens/SmartClean/Intro';
+import Detail from './src/screens/Detail/Detail';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -28,6 +28,11 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Detail"
+          component={Detail}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -88,11 +93,6 @@ export default function App() {
         <Stack.Screen
           name="SmartEvent"
           component={SmartEvent}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="SmartBlog"
-          component={Blog}
           options={{headerShown: false}}
         />
         <Stack.Screen
