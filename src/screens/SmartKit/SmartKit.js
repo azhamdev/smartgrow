@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView, ActivityIndicator, RefreshControl } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { ms } from 'react-native-size-matters'
@@ -16,6 +16,7 @@ import { useNavigation } from '@react-navigation/native'
 export default function SmartKit() {
   const [products, setProducts] = useState([])
   const Navigation = useNavigation();
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     getProducts();
@@ -23,24 +24,26 @@ export default function SmartKit() {
 
   const getProducts = async () => {
     const response = await axios.get("https://azhamrasyid.com/smartgrow/api/smartkit")
-    console.log(response.data.data)
     setProducts(response.data.data)
+    setIsLoaded(true)
   }
 
-  const sendMessage = () => {
-    let url =
-      'whatsapp://send?text=saya mau pesan' + '&phone=62' + `${products.contact}`;
+  // refresh control
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    getProducts().then(() => setRefreshing(false));
+  }, [])
 
-    Linking.openURL(url)
-      .then((data) => {
-        console.log('WhatsApp Opened');
-      })
-      .catch(() => {
-        alert('Make sure Whatsapp installed on your device');
-      });
-  }
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}>
+    <ScrollView refreshControl={
+      <RefreshControl
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+        size={'large'}
+        progressBackgroundColor={'#FFF'}
+      />}
+      style={{ flex: 1, backgroundColor: '#FFF' }}>
       <Navbar text={"Smart Kit"} />
       <View style={styles.contentWrapper}>
         <Header headline={"Dapatkan peralatan kebun terbaik!"} bgcolor={'#FFEBAB'} source={IL_Kit} />
@@ -49,24 +52,32 @@ export default function SmartKit() {
         </View>
         <View style={styles.productContainer}>
           {
-            products.map((product) => (
-              <View key={product.id}>
-                <Product
-                  mitra={product.mitra}
-                  source={{ uri: `${product.image}` }}
-                  price={product.price}
-                  name={product.title}
-                  onPress={() => Navigation.navigate('Detail', {
-                    mitra: `${product.mitra}`,
-                    source: `${product.image}`,
-                    price: `${product.price}`,
-                    name: `${product.title}`,
-                    contact: `${product.contact}`,
-                    desc: `${product.description}`
-                  })} />
-              </View>
-            ))
+            isLoaded ?
+              (
+                products.map((product) => (
+                  <View key={product.id}>
+                    <Product
+                      mitra={product.mitra}
+                      source={{ uri: `${product.image}` }}
+                      price={product.price}
+                      name={product.title}
+                      onPress={() => Navigation.navigate('Detail', {
+                        mitra: `${product.mitra}`,
+                        source: `${product.image}`,
+                        price: `${product.price}`,
+                        name: `${product.title}`,
+                        contact: `${product.contact}`,
+                        desc: `${product.description}`
+                      })} />
+                  </View>
+                ))
+              ) : (
+                <View style={{ flex: 1, justifyContent: 'center' }}>
+                  <ActivityIndicator size={'large'} color={"#609966"} />
+                </View>
+              )
           }
+
         </View>
       </View>
     </ScrollView>
@@ -79,8 +90,9 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    marginTop: ms(14)
+    justifyContent: 'space-between',
+    marginTop: ms(14),
+    flexWrap: 'wrap'
   },
   promoContainer: {
     paddingHorizontal: ms(14),

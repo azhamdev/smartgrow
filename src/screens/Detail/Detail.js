@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Navbar from '../../components/Navbar/Navbar'
@@ -11,7 +11,7 @@ export default function Detail({ route }) {
 
   const sendMessage = () => {
     let url =
-      'whatsapp://send?text=saya mau pesan' + '&phone=62' + `${contact}`;
+      `whatsapp://send?text= Halo Saya mau pesan ${name} dengan harga ${price}` + '&phone=62' + `${contact}`;
 
     Linking.openURL(url)
       .then((data) => {

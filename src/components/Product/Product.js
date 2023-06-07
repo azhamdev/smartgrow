@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
   imageWrapper: {
     width: ms(169),
     height: ms(127),
-    borderRadius: ms(8)
+    borderRadius: ms(8),
   },
   imageProduct: {
-    width: ms(166),
+    width: ms(170),
     height: ms(127),
     resizeMode: 'cover',
     borderTopLeftRadius: ms(8),
@@ -46,12 +46,12 @@ const styles = StyleSheet.create({
     color: '#000'
   },
   productContainer: {
-    width: ms(169),
+    width: ms(172),
     height: ms(214),
     borderRadius: ms(8),
     borderWidth: ms(1),
     borderColor: '#D9D9D9',
-    marginBottom: ms(12)
+    marginBottom: ms(12),
   },
   textWrapper: {
     padding: ms(10),

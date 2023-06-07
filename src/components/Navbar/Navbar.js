@@ -22,7 +22,7 @@ export default function Navbar({ text }) {
 
 const styles = StyleSheet.create({
   navbarBg: {
-    paddingHorizontal: ms(20),
+    paddingHorizontal: ms(12),
     paddingTop: ms(27),
     marginBottom: ms(14),
     flexDirection: 'row',

@@ -2,10 +2,10 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { ms } from 'react-native-size-matters'
 
-export default function Promo({ source }) {
+export default function Promo({ source, onPress }) {
   return (
     <View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <Image source={source} style={styles.promo} />
       </TouchableOpacity>
     </View>

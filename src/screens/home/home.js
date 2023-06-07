@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator, RefreshControl } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import { ms } from 'react-native-size-matters'
 
 //Icons
@@ -26,12 +26,43 @@ import Title from '../../components/title/title'
 import Menu from '../../components/menu/menu'
 import Promo from '../../components/promo/promo'
 import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
+import ListVideo from '../../components/ListVideo/ListVideo'
 
 export default function Home() {
   const Navigation = useNavigation();
+  const [courses, setCourses] = useState([])
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    getProducts()
+  }, [])
+
+  const getProducts = async () => {
+    const response = await axios.get("https://azhamrasyid.com/smartgrow/api/smartedu")
+    setCourses(response.data.data)
+    setIsLoaded(true)
+  }
+
+  // refresh control
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    getProducts().then(() => setRefreshing(false));
+  }, [])
+
   return (
     <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            size={'large'}
+            progressBackgroundColor={'#FFF'}
+            tintColor={'#FFF'}
+          />}
+        showsVerticalScrollIndicator={false}>
         <View>
           <Text style={styles.welcome}>
             Selamat Datang
@@ -54,19 +85,37 @@ export default function Home() {
           <Menu source={IC_Drink} title={"Smart Food"} onPress={() => Navigation.navigate('SmartFood')} />
           <Menu source={IC_Tech} title={"Smart Tech"} onPress={() => Navigation.navigate('SmartTech')} />
           <Menu source={IC_Event} title={"Smart Event"} onPress={() => Navigation.navigate('SmartEvent')} />
-          {/* <Menu source={IC_Event} title={"Blog"} onPress={() => Navigation.navigate('SmartBlog')} /> */}
         </View>
         <View style={styles.promoContainer}>
           <Title name={"Belanja makin hemat 🤑"} subtitle={"Dapetin diskon dan harga spesialnya sekarang sebelum kehabisan!"} />
         </View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <Promo source={Smoothies} />
-          <Promo source={Fruit} />
+          <Promo onPress={() => Navigation.navigate('Promo')} source={Smoothies} />
+          <Promo onPress={() => Navigation.navigate('Promo')} source={Fruit} />
         </ScrollView>
         <View style={styles.mycourseContainer}>
           <Title name={"Belajar makin mudah"} subtitle={"Dapetin ilmu tentang pertanian sekarang sebelum terlambat!"} />
-          <Course image={IL_Chili} title={"Teknik menanam cabai mudah hasil melimpah"} />
-          <Course image={IL_Pot} title={"Cara menyiapkan media tanam dari bahan bekas"} />
+          {
+            isLoaded ? (
+              courses.map((course) => (
+                <View key={course.id}>
+                  <ListVideo
+                    key={course.id}
+                    title={course.title}
+                    source={{ uri: `${course.image}` }}
+                    onPress={() => Navigation.navigate('DetailVideo', {
+                      title: `${course.title}`,
+                      videoId: `${course.link}`
+                    })}
+                  />
+                </View>
+              ))
+            ) : (
+              <View style={{ flex: 1, justifyContent: 'center' }}>
+                <ActivityIndicator size={'large'} color={"#609966"} />
+              </View>
+            )
+          }
         </View>
       </ScrollView>
     </View>

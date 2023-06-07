@@ -1,16 +1,19 @@
-import { StyleSheet, View, ScrollView, Image } from 'react-native'
+import { StyleSheet, View, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { ms } from 'react-native-size-matters'
 
 import IL_Promo1 from '../../assets/ilustrasi/promo3.png'
 import IL_Promo2 from '../../assets/ilustrasi/promo4.png'
-import axios from 'axios'
 import Product from '../../components/Product/Product'
 import Navbar from '../../components/Navbar/Navbar'
 
+import axios from 'axios'
+import { ms } from 'react-native-size-matters'
+import { useNavigation } from '@react-navigation/native'
 
 export default function Promo() {
   const [products, setProducts] = useState([])
+  const Navigation = useNavigation();
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     getProducts();
@@ -19,23 +22,26 @@ export default function Promo() {
   const getProducts = async () => {
     const res = await axios.get("https://azhamrasyid.com/smartgrow/api/smartfood")
     setProducts(res.data.data)
+    setIsLoaded(true)
   }
 
-  const sendMessage = () => {
-    let url =
-      'whatsapp://send?text=Saya mau pesan dari promo' + '&phone=62' + `${products.contact}`;
+  // refresh control
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    getProducts().then(() => setRefreshing(false));
+  }, [])
 
-    Linking.openURL(url)
-      .then((data) => {
-        console.log('WhatsApp Opened');
-      })
-      .catch(() => {
-        alert('Make sure Whatsapp installed on your device');
-      });
-  }
 
   return (
-    <ScrollView style={{ backgroundColor: '#FFF', flex: 1 }}>
+    <ScrollView refreshControl={
+      <RefreshControl
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+        size={'large'}
+        progressBackgroundColor={'#FFF'}
+        tintColor={'#FFF'}
+      />} style={{ backgroundColor: '#FFF', flex: 1 }}>
       <Navbar text={"Promo"} />
       <View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.contentWrapper}>
@@ -46,14 +52,33 @@ export default function Promo() {
       <View style={styles.contentWrapper}>
         <View style={styles.productContainer}>
           {
-            products.map((product) => (
-              <View key={product.id}>
-                <Product mitra={product.mitra} name={product.title} price={product.price} source={{ uri: `${product.image}` }} onPress={sendMessage} />
+            isLoaded ? (
+              products.map((product) => (
+                <View key={product.id}>
+                  <Product
+                    mitra={product.mitra}
+                    name={product.title}
+                    price={product.price}
+                    source={{ uri: `${product.image}` }}
+                    onPress={() => Navigation.navigate('Detail', {
+                      mitra: `${product.mitra}`,
+                      source: `${product.image}`,
+                      price: `${product.price}`,
+                      name: `${product.title}`,
+                      contact: `${product.contact}`,
+                      desc: `${product.description}`
+                    })}
+                  />
+                </View>
+              ))
+            ) : (
+              <View style={{ flex: 1, justifyContent: 'center' }}>
+                <ActivityIndicator size={'large'} color={"#609966"} />
               </View>
-            ))
+            )
+
           }
         </View>
-
       </View>
     </ScrollView>
   )
@@ -72,7 +97,7 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     flexWrap: 'wrap'
   },
 })

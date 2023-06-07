@@ -1,14 +1,20 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, useEffect } from 'react'
-import { Image, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native'
+import {
+  Image,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  ActivityIndicator,
+  RefreshControl,
+} from 'react-native'
 import { ms } from 'react-native-size-matters'
 import axios from 'axios'
 
 // ilustrasi
 import IL_Farm from '../../assets/ilustrasi/farmHouse.png'
 import IL_Praktik from '../../assets/ilustrasi/praktik.png'
-import IL_Chili from '../../assets/ilustrasi/chili.jpg'
-import IL_Pot from '../../assets/ilustrasi/ilustrasi2.jpg'
 import IL_Teori from '../../assets/ilustrasi/teori.png'
 
 // components
@@ -17,6 +23,8 @@ import Navbar from '../../components/Navbar/Navbar'
 
 export default function Edu() {
   const [Courses, setCourses] = useState([])
+  const [isLoaded, setIsLoaded] = useState(false)
+  const Navigation = useNavigation()
 
   useEffect(() => {
     getCourses();
@@ -26,13 +34,28 @@ export default function Edu() {
   const getCourses = async () => {
     const response = await axios.get("https://azhamrasyid.com/smartgrow/api/smartedu")
     setCourses(response.data.data)
+    setIsLoaded(true)
   }
 
+  // refresh control
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    getCourses().then(() => setRefreshing(false));
+  }, [])
 
 
-  const Navigation = useNavigation()
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}>
+    <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          size={'large'}
+          progressBackgroundColor={'#FFF'}
+        />
+      }
+    >
       <Navbar source={IL_Farm} text={"Smart Edu"} />
       <View style={styles.categories}>
         <TouchableOpacity onPress={() => Navigation.navigate('PraktikEdu')}>
@@ -43,33 +66,33 @@ export default function Edu() {
         </TouchableOpacity>
       </View>
       <View style={styles.container}>
-        {Courses.map((course) => (
-          <View key={course.id}>
-            <ListVideo
-              key={course.id}
-              title={course.title}
-              source={{ uri: `${course.image}` }}
-              onPress={() => Navigation.navigate('DetailVideo', {
-                title: `${course.title}`,
-                videoId: `${course.link}`
-              })}
-            />
-          </View>
-        ))}
-        <ListVideo source={IL_Chili} title={"Teknik menanam cabai mudah hasil melimpah"} onPress={() => Navigation.navigate('DetailVideo', {
-          title: "Cara mudah menanam wortel di polybag",
-          videoId: "djS8_k5jez0"
-        })} />
-        <ListVideo source={IL_Pot} title={"Cara menyiapkan media tanam dari bahan bekas"} onPress={() => Navigation.navigate('DetailVideo', {
-          title: "Cara mudah menanam wortel di polybag",
-          videoId: "djS8_k5jez0"
-        })} />
-        <ListVideo source={IL_Chili} title={"Ciri ciri cabai yang segar"} onPress={() => Navigation.navigate('DetailVideo', {
-          title: "Cara mudah menanam wortel di polybag",
-          videoId: "djS8_k5jez0"
-        })} />
+        {
+          isLoaded ? (
+            <View>
+              {
+                Courses.map((course) => (
+                  <View key={course.id}>
+                    <ListVideo
+                      key={course.id}
+                      title={course.title}
+                      source={{ uri: `${course.image}` }}
+                      onPress={() => Navigation.navigate('DetailVideo', {
+                        title: `${course.title}`,
+                        videoId: `${course.link}`
+                      })}
+                    />
+                  </View>
+                ))}
+            </View>
+          ) : (
+            <View>
+              <ActivityIndicator size={'large'} color={"#609966"} />
+            </View>
+          )
+        }
+
       </View>
-    </ScrollView>
+    </ScrollView >
   )
 }
 
