@@ -50,7 +50,7 @@ export default function Home() {
           <Menu source={IC_Maps} title={"Smart Maps"} onPress={() => Navigation.navigate('SmartMaps')} />
         </View>
         <View style={styles.containerMenu}>
-          <Menu source={IC_Clean} title={"Smart Clean"} onPress={() => Navigation.navigate('SmartClean')} />
+          <Menu source={IC_Clean} title={"Smart Clean"} onPress={() => Navigation.navigate('IntroClean')} />
           <Menu source={IC_Drink} title={"Smart Food"} onPress={() => Navigation.navigate('SmartFood')} />
           <Menu source={IC_Tech} title={"Smart Tech"} onPress={() => Navigation.navigate('SmartTech')} />
           <Menu source={IC_Event} title={"Smart Event"} onPress={() => Navigation.navigate('SmartEvent')} />

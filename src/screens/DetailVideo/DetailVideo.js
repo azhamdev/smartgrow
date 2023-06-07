@@ -13,7 +13,7 @@ export default function DetailVideo({ route }) {
   const { title, videoId } = route.params;
 
   return (
-    <View>
+    <View style={{ flex: 1, backgroundColor: '#FFF' }}>
       <YoutubePlayer
         height={300}
         // play={playing}

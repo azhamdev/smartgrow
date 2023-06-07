@@ -29,6 +29,6 @@ export default function BottomTab() {
 
 const styles = StyleSheet.create({
   options: {
-    backgroundColor: 'red'
+    backgroundColor: 'red',
   }
 })

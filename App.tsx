@@ -18,6 +18,7 @@ import SmartMaps from './src/screens/SmartMaps/SmartMaps';
 import SmartPlant from './src/screens/SmartPlant/SmartPlant';
 import SmartTech from './src/screens/SmartTech/SmartTech';
 import Home from './src/screens/home/home';
+import IntroClean from './src/screens/SmartClean/Intro';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -80,6 +81,11 @@ export default function App() {
           options={{headerShown: false}}
         />
         <Stack.Screen
+          name="IntroClean"
+          component={IntroClean}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="SmartEvent"
           component={SmartEvent}
           options={{headerShown: false}}
@@ -105,7 +111,3 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({});
-
-// <View style={{flex: 1, backgroundColor: '#ECECEC'}}>
-//   <Home />
-// </View>

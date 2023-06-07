@@ -2,64 +2,70 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { ms } from 'react-native-size-matters'
 
-export default function Product({ source, price, name, onPress }) {
+export default function Product({ source, price, name, onPress, mitra }) {
   return (
-    <View style={styles.productContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.productContainer}>
       <View style={styles.imageWrapper}>
         <Image source={source} style={styles.imageProduct} />
       </View>
-      <View>
+      <View style={styles.textWrapper}>
         <View>
+          <Text style={styles.mitra}>
+            {mitra}
+          </Text>
           <Text style={styles.nameProduct}>
             {name}
           </Text>
+        </View>
+        <View>
           <Text style={styles.priceProduct}>
-            Rp{price}
+            Rp {price}
           </Text>
         </View>
-        <TouchableOpacity onPress={onPress} style={styles.button}>
-          <Text style={styles.buttonText}>
-            Pesan Sekarang
-          </Text>
-        </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity >
   )
 }
 
 const styles = StyleSheet.create({
   imageWrapper: {
-    width: ms(120),
+    width: ms(169),
+    height: ms(127),
+    borderRadius: ms(8)
   },
   imageProduct: {
-    width: '100%',
-    height: undefined,
-    aspectRatio: 1
+    width: ms(166),
+    height: ms(127),
+    resizeMode: 'cover',
+    borderTopLeftRadius: ms(8),
+    borderTopRightRadius: ms(8),
   },
   nameProduct: {
-    fontSize: ms(18),
+    fontSize: ms(12),
     fontWeight: '700',
     color: '#000'
   },
   productContainer: {
-    alignItems: 'center',
-    width: ms(160),
-    marginTop: ms(20),
-    borderWidth: ms(0.7),
+    width: ms(169),
+    height: ms(214),
+    borderRadius: ms(8),
+    borderWidth: ms(1),
+    borderColor: '#D9D9D9',
+    marginBottom: ms(12)
+  },
+  textWrapper: {
     padding: ms(10),
-    borderRadius: ms(12),
-    borderColor: '#7F8487',
-    backgroundColor: '#FFF'
+    height: ms(87),
+    width: ms(169),
+    justifyContent: 'space-between'
   },
-  button: {
-    marginTop: ms(12),
-    backgroundColor: '#FFD966',
-    paddingHorizontal: ms(20),
-    paddingVertical: ms(10),
-    borderRadius: ms(12)
+  mitra: {
+    fontSize: ms(8),
+    color: '#838383'
   },
-  buttonText: {
-    color: '#000',
-    fontWeight: '600'
+  priceProduct: {
+    color: '#609966',
+    fontSize: ms(14),
+    fontWeight: '800'
   }
 })

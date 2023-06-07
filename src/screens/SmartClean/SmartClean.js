@@ -1,17 +1,67 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
 import IL_Oops from '../../assets/ilustrasi/oops.png'
+import IL_SmartClean from '../../assets/ilustrasi/smartClean2.png'
 import { ms } from 'react-native-size-matters'
 
 export default function SmartClean() {
+  const sendMessage = () => {
+    let url =
+      'whatsapp://send?text=saya mau membersihkan kebun saya' + '&phone=62' + 895379181484;
+
+    Linking.openURL(url)
+      .then((data) => {
+        console.log('WhatsApp Opened');
+      })
+      .catch(() => {
+        alert('Make sure Whatsapp installed on your device');
+      });
+  }
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Image source={IL_Oops} />
-      <Text style={{ fontSize: ms(20), color: 'black', marginTop: ms(10) }}>
-        Sedang Masa pengembangan
+    <View style={styles.container}>
+      <Image source={IL_SmartClean} style={styles.IL_SmartClean} />
+      <Text style={
+        {
+          fontSize: ms(23),
+          fontWeight: '700',
+          color: '#000'
+        }
+      }>
+        Smart Clean!
       </Text>
+      <Text>
+        Siap membantu membersihkan dan merawat kebun
+        Anda !
+      </Text>
+      <TouchableOpacity onPress={sendMessage} style={styles.buttonClean}>
+        <Text style={styles.textButton}>
+          Hubungi sekarang!
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: ms(42),
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#FFF'
+  },
+  IL_SmartClean: {
+    width: '100%',
+    height: '70%'
+  },
+  textButton: {
+    fontSize: ms(20),
+    color: '#FFF',
+  },
+  buttonClean: {
+    backgroundColor: '#609966',
+    paddingHorizontal: ms(60),
+    paddingVertical: ms(11),
+    borderRadius: ms(10)
+  }
+})

@@ -1,15 +1,30 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { ms } from 'react-native-size-matters'
 import Product from '../../components/Product/Product'
 
-import IL_Siram from '../../assets/ilustrasi/siram.png'
+import IL_Kit from '../../assets/ilustrasi/smartKit.png'
 import IL_Penyiram from '../../assets/ilustrasi/penyiram.png'
 import IL_Penyemprot from '../../assets/ilustrasi/penyemprotHama.png'
+import Header from '../../components/Header/Header'
+import Title from '../../components/title/title'
+import axios from 'axios'
 
 
 export default function SmartKit() {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    getProducts();
+  }, [])
+
+  const getProducts = async () => {
+    const response = await axios.get("https://azhamrasyid.com/smartgrow/api/smartkit")
+    console.log(response.data.data)
+    setProducts(response.data.data)
+  }
+
   const sendMessage = () => {
     let url =
       'whatsapp://send?text=saya mau pesan' + '&phone=62' + 895379181484;
@@ -23,15 +38,25 @@ export default function SmartKit() {
       });
   }
   return (
-    <View>
-      <Navbar source={IL_Siram} text={"Dapatkan alat untuk kebunmu"} />
+    <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}>
+      <Navbar text={"Smart Kit"} />
       <View style={styles.contentWrapper}>
+        <Header headline={"Dapatkan peralatan kebun terbaik!"} bgcolor={'#FFEBAB'} source={IL_Kit} />
+        <View style={styles.promoContainer}>
+          <Title name={"Kebun yang baik diolah dari alat yang baik 😎"} subtitle={"Dapetin alat-alat pertanian berkualitas sekarang!"} />
+        </View>
         <View style={styles.productContainer}>
-          <Product source={IL_Penyiram} price={67000} name={"Penyiram Tanaman Rumah"} onPress={sendMessage} />
-          <Product source={IL_Penyemprot} price={267000} name={"Penyemprot Hama 1.6lt"} onPress={sendMessage} />
+          {
+            products.map((product) => (
+              <View key={product.id}>
+                <Product mitra={product.mitra} source={{ uri: `${product.image}` }} price={product.price} name={product.title} onPress={sendMessage} />
+              </View>
+            ))
+          }
+          <Product mitra={"Sahabat Tani"} source={IL_Penyemprot} price={267000} name={"Penyemprot Hama 1.6lt"} onPress={sendMessage} />
         </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -41,6 +66,12 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+    marginTop: ms(14)
+  },
+  promoContainer: {
+    paddingHorizontal: ms(14),
+    marginTop: ms(12),
+    marginBottom: ms(-12)
   }
 })

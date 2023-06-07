@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": 11,
+      "name": "Kopi susu",
+      "image": "b00eadfffa914cc806f3455b59404e65.jpg",
+      "price": "",
+      "contact": "",
+      "url": "http://localhost:5000/images/b00eadfffa914cc806f3455b59404e65.jpg",
+      "createdAt": "2023-06-05T01:31:16.000Z",
+      "updatedAt": "2023-06-05T01:31:16.000Z"
+    },
+    {
+      "id": 12,
+      "name": "Kopi",
+      "image": "06b3b747b54821d23b9a04a1df5ddc69.jpg",
+      "price": "",
+      "contact": "",
+      "url": "http://localhost:5000/images/06b3b747b54821d23b9a04a1df5ddc69.jpg",
+      "createdAt": "2023-06-05T01:45:49.000Z",
+      "updatedAt": "2023-06-05T01:45:49.000Z"
+    },
+    {
+      "id": 13,
+      "name": "kopiiii",
+      "image": "06b3b747b54821d23b9a04a1df5ddc69.jpg",
+      "price": "12134342",
+      "contact": "6289474747474",
+      "url": "http://localhost:5000/images/06b3b747b54821d23b9a04a1df5ddc69.jpg",
+      "createdAt": "2023-06-05T01:49:36.000Z",
+      "updatedAt": "2023-06-05T01:49:36.000Z"
+    },
+    {
+      "id": 14,
+      "name": "azham",
+      "image": "7b9e9368b8473e90eec9a88e4efe6334.jpg",
+      "price": "1232323",
+      "contact": "2323231313",
+      "url": "http://localhost:5000/images/7b9e9368b8473e90eec9a88e4efe6334.jpg",
+      "createdAt": "2023-06-05T04:10:25.000Z",
+      "updatedAt": "2023-06-05T04:10:25.000Z"
+    }
+  ]
+}
