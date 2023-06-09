@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Image, StyleSheet, View, Text } from 'react-native';
 import Promo from '../../screens/Promo/Promo';
-import SmartMaps from '../../screens/SmartMaps/SmartMaps';
 import Home from '../../screens/home/home';
 import Edu from '../../screens/Edu/edu';
 import { ms } from 'react-native-size-matters';

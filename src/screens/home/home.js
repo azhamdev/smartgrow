@@ -1,33 +1,30 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator, RefreshControl } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, Image, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
 
 //Icons
 import IC_Video from '../../assets/icons/cinema.png'
-import IC_Plant from '../../assets/icons/plant.png'
-import IC_Tool from '../../assets/icons/tool.png'
-import IC_Maps from '../../assets/icons/maps.png'
-import IC_Clean from '../../assets/icons/repair.png'
 import IC_Drink from '../../assets/icons/drink.png'
-import IC_Tech from '../../assets/icons/iot.png'
 import IC_Event from '../../assets/icons/event.png'
+import IC_Tech from '../../assets/icons/iot.png'
+import IC_Maps from '../../assets/icons/maps.png'
+import IC_Plant from '../../assets/icons/plant.png'
+import IC_Clean from '../../assets/icons/repair.png'
+import IC_Tool from '../../assets/icons/tool.png'
 
 
 //images
-import IL_Chili from '../../assets/ilustrasi/chili.jpg'
-import IL_Pot from '../../assets/ilustrasi/ilustrasi2.jpg'
 import Sample from '../../assets/ilustrasi/farm.jpg'
 import Smoothies from '../../assets/ilustrasi/promo1.png'
 import Fruit from '../../assets/ilustrasi/promo2.png'
 
 //components
-import Course from '../../components/courses/course'
-import Title from '../../components/title/title'
-import Menu from '../../components/menu/menu'
-import Promo from '../../components/promo/promo'
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
 import ListVideo from '../../components/ListVideo/ListVideo'
+import Menu from '../../components/menu/menu'
+import Promo from '../../components/promo/promo'
+import Title from '../../components/title/title'
 
 export default function Home() {
   const Navigation = useNavigation();

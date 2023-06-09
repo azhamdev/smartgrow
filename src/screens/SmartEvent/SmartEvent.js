@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView, ActivityIndicator, RefreshControl, Dimensions } from 'react-native'
-import React, { useState, useEffect } from 'react'
-import Navbar from '../../components/Navbar/Navbar'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, Dimensions, Image, RefreshControl, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
+import Navbar from '../../components/Navbar/Navbar'
 
-import IL_Event from '../../assets/ilustrasi/smartevent.png'
-import Title from '../../components/title/title'
-import axios from 'axios'
 import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
+import Title from '../../components/title/title'
 
 const windowWidth = Dimensions.get('window').width;
 

@@ -1,16 +1,14 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView, ActivityIndicator, RefreshControl } from 'react-native'
-import React, { useState, useEffect } from 'react'
-import Navbar from '../../components/Navbar/Navbar'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
+import Navbar from '../../components/Navbar/Navbar'
 import Product from '../../components/Product/Product'
 
-import IL_SmartTech from '../../assets/ilustrasi/smartTech.png'
-import IL_Monitoring from '../../assets/ilustrasi/mentoring.png'
-import IL_PenyiramOtomatis from '../../assets/ilustrasi/penyiramOtomatis.png'
-import Title from '../../components/title/title'
-import Header from '../../components/Header/Header'
-import axios from 'axios'
 import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
+import IL_SmartTech from '../../assets/ilustrasi/smartTech.png'
+import Header from '../../components/Header/Header'
+import Title from '../../components/title/title'
 
 
 export default function SmartTech() {

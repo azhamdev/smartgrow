@@ -1,17 +1,17 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import {
-  Image,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  ScrollView,
   ActivityIndicator,
+  Dimensions,
+  Image,
   RefreshControl,
-  Dimensions
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View
 } from 'react-native'
 import { ms } from 'react-native-size-matters'
-import axios from 'axios'
 
 // ilustrasi
 import IL_Farm from '../../assets/ilustrasi/farmHouse.png'

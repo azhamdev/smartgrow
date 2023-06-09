@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
-import IL_Oops from '../../assets/ilustrasi/oops.png'
-import IL_SmartClean from '../../assets/ilustrasi/smartClean2.png'
+import { Image, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
+import IL_SmartClean from '../../assets/ilustrasi/smartClean2.png'
 
 export default function SmartClean() {
   const sendMessage = () => {

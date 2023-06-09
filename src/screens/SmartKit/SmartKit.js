@@ -1,16 +1,14 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView, ActivityIndicator, RefreshControl } from 'react-native'
-import React, { useState, useEffect } from 'react'
-import Navbar from '../../components/Navbar/Navbar'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
+import Navbar from '../../components/Navbar/Navbar'
 import Product from '../../components/Product/Product'
 
+import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
 import IL_Kit from '../../assets/ilustrasi/smartKit.png'
-import IL_Penyiram from '../../assets/ilustrasi/penyiram.png'
-import IL_Penyemprot from '../../assets/ilustrasi/penyemprotHama.png'
 import Header from '../../components/Header/Header'
 import Title from '../../components/title/title'
-import axios from 'axios'
-import { useNavigation } from '@react-navigation/native'
 
 
 export default function SmartKit() {

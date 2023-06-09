@@ -1,16 +1,18 @@
-import {
-  StyleSheet,
-  Text, View, Image, TouchableOpacity, Linking, ScrollView, ActivityIndicator, RefreshControl
-} from 'react-native'
-import React, { useState, useEffect } from 'react'
-import { ms } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import {
+  ActivityIndicator, RefreshControl,
+  ScrollView,
+  StyleSheet,
+  View
+} from 'react-native'
+import { ms } from 'react-native-size-matters'
 
-import Product from '../../components/Product/Product'
-import Navbar from '../../components/Navbar/Navbar'
-import Title from '../../components/title/title'
 import Header from '../../components/Header/Header'
+import Navbar from '../../components/Navbar/Navbar'
+import Product from '../../components/Product/Product'
+import Title from '../../components/title/title'
 
 import IL_Plant from '../../assets/ilustrasi/smartPlant.png'
 

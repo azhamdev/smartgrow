@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, Dimensions, ScrollView } from 'react-native'
-import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import Navbar from '../../components/Navbar/Navbar'
+import React from 'react'
+import { Dimensions, Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
+import Navbar from '../../components/Navbar/Navbar'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;

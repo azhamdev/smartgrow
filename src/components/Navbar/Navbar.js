@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native'
-import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+import React from 'react'
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
 
 import IC_Back from '../../assets/icons/leftArrow.png'

@@ -1,11 +1,10 @@
-import React from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { ms } from 'react-native-size-matters';
 import YoutubePlayer from "react-native-youtube-iframe";
-import IL_Wortel from '../../assets/ilustrasi/tanamWortel.png'
-import IL_Tomat from '../../assets/ilustrasi/tomat.png'
+import IL_Wortel from '../../assets/ilustrasi/tanamWortel.png';
 import ListVideo from '../../components/ListVideo/ListVideo';
-import { useNavigation } from '@react-navigation/native';
 import Navbar from '../../components/Navbar/Navbar';
 
 

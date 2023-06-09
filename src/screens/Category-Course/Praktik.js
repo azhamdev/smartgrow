@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
+import { Image, StyleSheet, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
 import ListVideo from '../../components/ListVideo/ListVideo'
-import { useNavigation } from '@react-navigation/native'
+import Navbar from '../../components/Navbar/Navbar'
 
 // ilustrasi
-import IL_Praktik from '../../assets/ilustrasi/smartEdu1Full.png'
 import IL_Chili from '../../assets/ilustrasi/chili.jpg'
 import IL_Pot from '../../assets/ilustrasi/ilustrasi2.jpg'
+import IL_Praktik from '../../assets/ilustrasi/smartEdu1Full.png'
 
 export default function Praktik() {
   const Navigation = useNavigation()

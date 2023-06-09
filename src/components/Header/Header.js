@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
-import React from 'react'
-import { ms } from 'react-native-size-matters'
+import React from 'react';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { ms } from 'react-native-size-matters';
 
 const windowWidth = Dimensions.get('window').width;
 

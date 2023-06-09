@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useState, useEffect } from 'react'
-import MapView, { Callout, Marker } from 'react-native-maps'
-import IC_Marker from '../../assets/icons/marker.png'
-import { ms } from 'react-native-size-matters'
 import axios from 'axios'
 import Lottie from 'lottie-react-native'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, View } from 'react-native'
+import MapView, { Callout, Marker } from 'react-native-maps'
+import { ms } from 'react-native-size-matters'
+import IC_Marker from '../../assets/icons/marker.png'
 
 import Loading from '../../assets/Lotties/forMaps.json'
 

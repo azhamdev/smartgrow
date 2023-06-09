@@ -1,14 +1,14 @@
-import { StyleSheet, View, ScrollView, Image, ActivityIndicator, RefreshControl, Dimensions } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, Dimensions, Image, RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 
 import IL_Promo1 from '../../assets/ilustrasi/promo3.png'
 import IL_Promo2 from '../../assets/ilustrasi/promo4.png'
-import Product from '../../components/Product/Product'
 import Navbar from '../../components/Navbar/Navbar'
+import Product from '../../components/Product/Product'
 
+import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
 import { ms } from 'react-native-size-matters'
-import { useNavigation } from '@react-navigation/native'
 
 const windowWidth = Dimensions.get('window').width;
 

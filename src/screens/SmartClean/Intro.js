@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { ms } from 'react-native-size-matters'
 import Lottie from 'lottie-react-native'
+import React from 'react'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ms } from 'react-native-size-matters'
 
 // icons 
 import IC_Next from '../../assets/icons/next.png'
@@ -18,11 +18,11 @@ export default function IntroClean({ navigation }) {
       <View style={styles.wrapper}>
         <View>
           <Text style={styles.anytime}>
-            Hai smartfarmer 😍
+            Hai bestie 😍
           </Text>
           <Text style={styles.anywhere}>
             <Text style={styles.span}>
-              Lelah bestie ? butuh bantuan bersihin kebun ?
+              Kamu Lelah? butuh bantuan bersihin kebun ?
             </Text>
             <View style={styles.spanCustom}>
             </View>
