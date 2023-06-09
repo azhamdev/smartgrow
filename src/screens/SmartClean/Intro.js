@@ -1,17 +1,20 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { ms } from 'react-native-size-matters'
+import Lottie from 'lottie-react-native'
 
 // icons 
 import IC_Next from '../../assets/icons/next.png'
 
 // ilustrasi 
-import IL_Intro from '../../assets/ilustrasi/smartClean.png'
+// import IL_Intro from '../../assets/ilustrasi/smartClean.png'
+import IL_Intro from '../../assets/Lotties/forClean.json'
 
 export default function IntroClean({ navigation }) {
   return (
     <View style={styles.container}>
-      <Image source={IL_Intro} style={styles.ilustrasi} />
+      <Lottie source={IL_Intro} autoPlay loop style={styles.ilustrasi} />
+      {/* <Image source={IL_Intro} style={styles.ilustrasi} /> */}
       <View style={styles.wrapper}>
         <View>
           <Text style={styles.anytime}>
@@ -42,7 +45,6 @@ const styles = StyleSheet.create({
   },
   ilustrasi: {
     width: '100%',
-    height: '50%'
   },
   anytime: {
     fontSize: ms(18),

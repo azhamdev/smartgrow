@@ -1,8 +1,11 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, Dimensions, ScrollView } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Navbar from '../../components/Navbar/Navbar'
 import { ms } from 'react-native-size-matters'
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 
 export default function Detail({ route }) {
@@ -22,8 +25,8 @@ export default function Detail({ route }) {
       });
   }
   return (
-    <View>
-      <Navbar text={`Detail Product`} />
+    <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+      <Navbar text={`Detail`} />
       <View style={styles.contentWrapper}>
         <Image
           source={{ uri: `${source}` }}
@@ -33,7 +36,7 @@ export default function Detail({ route }) {
           {
             justifyContent: 'space-between',
             flexDirection: 'column',
-            height: ms(380)
+            height: windowHeight / 2
           }}>
           <View>
             <Text style={styles.mitra}>{mitra}</Text>
@@ -50,18 +53,19 @@ export default function Detail({ route }) {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   thumbnail: {
     height: ms(245),
-    width: ms(353),
+    width: windowWidth - ms(24),
     borderRadius: ms(6)
   },
   contentWrapper: {
-    paddingHorizontal: ms(12),
+    width: windowWidth,
+    paddingHorizontal: ms(12)
   },
   mitra: {
     fontSize: ms(14),
@@ -89,11 +93,10 @@ const styles = StyleSheet.create({
   },
   buttonOrder: {
     backgroundColor: '#609966',
-    width: ms(353),
     height: ms(56),
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: ms(12)
+    borderRadius: ms(12),
   },
   textButton: {
     color: '#FFF',

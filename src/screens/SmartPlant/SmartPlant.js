@@ -43,7 +43,6 @@ export default function SmartPlant() {
       <RefreshControl
         refreshing={refreshing}
         onRefresh={onRefresh}
-        size={'large'}
         progressBackgroundColor={'#FFF'}
       />}
       style={{

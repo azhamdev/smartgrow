@@ -2,8 +2,11 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView, R
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { ms } from 'react-native-size-matters'
-import Product from '../../components/Product/Product'
+import Lottie from 'lottie-react-native'
+import axios from 'axios'
+import { useNavigation } from '@react-navigation/native'
 
+import Product from '../../components/Product/Product'
 import IL_Melon from '../../assets/ilustrasi/melon.png'
 import IL_Siram from '../../assets/ilustrasi/siram.png'
 import Promo from '../../components/promo/promo'
@@ -11,8 +14,9 @@ import Promo from '../../components/promo/promo'
 import Smoothies from '../../assets/ilustrasi/promo1.png'
 import Fruit from '../../assets/ilustrasi/promo2.png'
 import Title from '../../components/title/title'
-import axios from 'axios'
-import { useNavigation } from '@react-navigation/native'
+
+// lottie 
+import Loading from '../../assets/Lotties/forFood.json'
 
 
 
@@ -43,7 +47,6 @@ export default function SmartFood() {
       <RefreshControl
         refreshing={refreshing}
         onRefresh={onRefresh}
-        size={'large'}
         progressBackgroundColor={'#FFF'}
         tintColor={'#FFF'}
       />}>
@@ -77,8 +80,9 @@ export default function SmartFood() {
                 </View>
               ))
             ) : (
-              <View style={{ flex: 1, justifyContent: 'center' }}>
-                <ActivityIndicator size={'large'} color={"#609966"} />
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                {/* <ActivityIndicator size={'large'} color={"#609966"} /> */}
+                <Lottie source={Loading} autoPlay loop style={{ width: ms(200) }} />
               </View>
             )
           }
@@ -94,9 +98,9 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     marginTop: ms(14),
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   promoContainer: {
     paddingHorizontal: ms(14),

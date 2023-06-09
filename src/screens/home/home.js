@@ -58,7 +58,6 @@ export default function Home() {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={onRefresh}
-            size={'large'}
             progressBackgroundColor={'#FFF'}
             tintColor={'#FFF'}
           />}
@@ -125,6 +124,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     // paddingHorizontal: ms(14),
+    marginBottom: ms(70)
   },
   header: {
     paddingHorizontal: ms(14),

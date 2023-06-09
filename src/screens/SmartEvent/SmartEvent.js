@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView, ActivityIndicator, RefreshControl } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Linking, ScrollView, ActivityIndicator, RefreshControl, Dimensions } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { ms } from 'react-native-size-matters'
@@ -7,6 +7,8 @@ import IL_Event from '../../assets/ilustrasi/smartevent.png'
 import Title from '../../components/title/title'
 import axios from 'axios'
 import { useNavigation } from '@react-navigation/native'
+
+const windowWidth = Dimensions.get('window').width;
 
 
 export default function SmartEvent() {
@@ -36,7 +38,6 @@ export default function SmartEvent() {
       <RefreshControl
         refreshing={refreshing}
         onRefresh={onRefresh}
-        size={'large'}
         progressBackgroundColor={'#FFF'}
         tintColor={'#FFF'}
       />} style={{ flex: 1 }}>
@@ -117,13 +118,13 @@ const styles = StyleSheet.create({
   },
   productWrapper: {
     height: ms(220),
-    width: ms(353),
+    width: windowWidth - ms(24),
     backgroundColor: '#fff',
     borderRadius: ms(12),
     marginBottom: ms(10)
   },
   imageWrapper: {
-    width: ms(353),
+    width: '100%',
     height: ms(143),
     borderTopRightRadius: ms(12),
     borderTopLeftRadius: ms(12),

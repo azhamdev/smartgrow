@@ -6,6 +6,7 @@ import IL_Wortel from '../../assets/ilustrasi/tanamWortel.png'
 import IL_Tomat from '../../assets/ilustrasi/tomat.png'
 import ListVideo from '../../components/ListVideo/ListVideo';
 import { useNavigation } from '@react-navigation/native';
+import Navbar from '../../components/Navbar/Navbar';
 
 
 export default function DetailVideo({ route }) {
@@ -14,13 +15,14 @@ export default function DetailVideo({ route }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#FFF' }}>
-      <YoutubePlayer
-        height={300}
-        // play={playing}
-        videoId={`${videoId}`}
-      // onChangeState={onStateChange}
-      />
+      <Navbar text={title} />
       <View style={styles.container}>
+        <YoutubePlayer
+          height={300}
+          // play={playing}
+          videoId={`${videoId}`}
+        // onChangeState={onStateChange}
+        />
         <Text style={styles.title}>
           {title}
         </Text>
@@ -37,8 +39,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: ms(20),
     color: '#000',
-    marginTop: ms(-40),
-    marginBottom: ms(40)
+    marginTop: ms(-80),
+    marginBottom: ms(40),
+    fontWeight: 'bold'
   },
   container: {
     paddingHorizontal: ms(14)

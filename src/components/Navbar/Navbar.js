@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { ms } from 'react-native-size-matters'
 
 import IC_Back from '../../assets/icons/leftArrow.png'
+
+const windowWidth = Dimensions.get('window').width;
 
 
 export default function Navbar({ text }) {
@@ -29,14 +31,16 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   arrowBack: {
-    width: ms(34),
-    height: ms(34)
+    width: ms(24),
+    height: ms(24)
   },
   text: {
-    fontSize: ms(24),
+    fontSize: ms(16),
     color: '#000',
-    maxWidth: ms(160),
+    flex: 1,
+    width: windowWidth - ms(12),
     fontWeight: '700',
-    marginLeft: ms(16)
+    marginLeft: ms(12),
+    flexWrap: 'wrap',
   }
 })

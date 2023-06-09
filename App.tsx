@@ -58,7 +58,7 @@ export default function App() {
         <Stack.Screen
           name="SmartMaps"
           component={SmartMaps}
-          options={{headerShown: false}}
+          // options={{headerShown: false}}
         />
         <Stack.Screen
           name="SmartPlant"

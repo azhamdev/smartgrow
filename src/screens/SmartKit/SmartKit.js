@@ -40,7 +40,6 @@ export default function SmartKit() {
       <RefreshControl
         refreshing={refreshing}
         onRefresh={onRefresh}
-        size={'large'}
         progressBackgroundColor={'#FFF'}
       />}
       style={{ flex: 1, backgroundColor: '#FFF' }}>

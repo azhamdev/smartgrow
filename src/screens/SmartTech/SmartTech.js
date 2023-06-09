@@ -42,7 +42,6 @@ export default function SmartTech() {
       <RefreshControl
         refreshing={refreshing}
         onRefresh={onRefresh}
-        size={'large'}
         progressBackgroundColor={'#FFF'}
         tintColor={'#FFF'}
       />}

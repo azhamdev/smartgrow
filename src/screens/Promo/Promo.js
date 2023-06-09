@@ -1,4 +1,4 @@
-import { StyleSheet, View, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native'
+import { StyleSheet, View, ScrollView, Image, ActivityIndicator, RefreshControl, Dimensions } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
 import IL_Promo1 from '../../assets/ilustrasi/promo3.png'
@@ -9,6 +9,8 @@ import Navbar from '../../components/Navbar/Navbar'
 import axios from 'axios'
 import { ms } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
+
+const windowWidth = Dimensions.get('window').width;
 
 export default function Promo() {
   const [products, setProducts] = useState([])
@@ -38,7 +40,6 @@ export default function Promo() {
       <RefreshControl
         refreshing={refreshing}
         onRefresh={onRefresh}
-        size={'large'}
         progressBackgroundColor={'#FFF'}
         tintColor={'#FFF'}
       />} style={{ backgroundColor: '#FFF', flex: 1 }}>
@@ -87,7 +88,8 @@ export default function Promo() {
 const styles = StyleSheet.create({
   image: {
     height: ms(138),
-    width: ms(344),
+    // width: ms(344),
+    width: windowWidth - ms(34),
     marginHorizontal: ms(4),
     borderRadius: ms(10)
   },

@@ -12,6 +12,7 @@ import HomeActive from '../../assets/icons/homeActive.png'
 import Video from '../../assets/icons/Video.png'
 import IC_Promo from '../../assets/icons/Promo.png'
 import Maps from '../../assets/icons/maps2.png'
+import SmartFood from '../../screens/SmartFood/SmartFood';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,9 +20,13 @@ export default function BottomTab() {
   return (
     <Tab.Navigator screenOptions={{
       tabBarStyle: {
-        height: ms(70),
+        height: ms(54),
+        position: 'absolute',
+        bottom: ms(20),
+        borderRadius: ms(16),
+        marginHorizontal: ms(12)
       },
-      tabBarShowLabel: false
+      tabBarShowLabel: false,
     }}>
       <Tab.Screen
         name='Home'
@@ -35,14 +40,16 @@ export default function BottomTab() {
                   source={HomeActive}
                   resizeMode='contain'
                   style={{
-                    width: ms(32),
-                    height: ms(32),
+                    width: focused ? ms(24) : ms(20),
+                    height: focused ? ms(24) : ms(20),
                     tintColor: focused ? '#609966' : '#EEEEEE'
                   }}
                 />
                 <Text
                   style={{
                     color: focused ? '#609966' : '#EEE',
+                    fontSize: focused ? ms(12) : ms(10),
+                    fontWeight: focused ? '700' : '600'
                   }}
                 >
                   Home
@@ -51,6 +58,36 @@ export default function BottomTab() {
             )
           }
         } />
+      <Tab.Screen
+        name='SmartFood'
+        component={SmartFood}
+        options={
+          options = {
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <View style={{ alignItems: 'center' }}>
+                <Image
+                  source={Maps}
+                  resizeMode='contain'
+                  style={{
+                    width: focused ? ms(24) : ms(20),
+                    height: focused ? ms(24) : ms(20),
+                    tintColor: focused ? '#609966' : '#EEEEEE'
+                  }}
+                />
+                <Text
+                  style={{
+                    color: focused ? '#609966' : '#EEE',
+                    fontSize: focused ? ms(12) : ms(10),
+                    fontWeight: focused ? '700' : '600'
+                  }}
+                >
+                  Food
+                </Text>
+              </View>
+            )
+          }}
+      />
       <Tab.Screen
         name='Course'
         component={Edu}
@@ -63,14 +100,16 @@ export default function BottomTab() {
                   source={Video}
                   resizeMode='contain'
                   style={{
-                    width: ms(32),
-                    height: ms(32),
+                    width: focused ? ms(24) : ms(20),
+                    height: focused ? ms(24) : ms(20),
                     tintColor: focused ? '#609966' : '#EEEEEE'
                   }}
                 />
                 <Text
                   style={{
                     color: focused ? '#609966' : '#EEE',
+                    fontSize: focused ? ms(12) : ms(10),
+                    fontWeight: focused ? '700' : '600'
                   }}
                 >
                   Course
@@ -91,14 +130,16 @@ export default function BottomTab() {
                   source={IC_Promo}
                   resizeMode='contain'
                   style={{
-                    width: ms(32),
-                    height: ms(32),
+                    width: focused ? ms(24) : ms(20),
+                    height: focused ? ms(24) : ms(20),
                     tintColor: focused ? '#609966' : '#EEEEEE'
                   }}
                 />
                 <Text
                   style={{
                     color: focused ? '#609966' : '#EEE',
+                    fontSize: focused ? ms(12) : ms(10),
+                    fontWeight: focused ? '700' : '600'
                   }}
                 >
                   Promo
@@ -107,34 +148,7 @@ export default function BottomTab() {
             )
           }}
       />
-      <Tab.Screen
-        name='Maps'
-        component={SmartMaps}
-        options={
-          options = {
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-              <View style={{ alignItems: 'center' }}>
-                <Image
-                  source={Maps}
-                  resizeMode='contain'
-                  style={{
-                    width: ms(32),
-                    height: ms(32),
-                    tintColor: focused ? '#609966' : '#EEEEEE'
-                  }}
-                />
-                <Text
-                  style={{
-                    color: focused ? '#609966' : '#EEE',
-                  }}
-                >
-                  Maps
-                </Text>
-              </View>
-            )
-          }}
-      />
+
     </Tab.Navigator>
   )
 }

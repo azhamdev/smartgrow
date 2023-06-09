@@ -8,6 +8,7 @@ import {
   ScrollView,
   ActivityIndicator,
   RefreshControl,
+  Dimensions
 } from 'react-native'
 import { ms } from 'react-native-size-matters'
 import axios from 'axios'
@@ -20,6 +21,8 @@ import IL_Teori from '../../assets/ilustrasi/teori.png'
 // components
 import ListVideo from '../../components/ListVideo/ListVideo'
 import Navbar from '../../components/Navbar/Navbar'
+
+const windowWidth = Dimensions.get('window').width;
 
 export default function Edu() {
   const [Courses, setCourses] = useState([])
@@ -51,7 +54,6 @@ export default function Edu() {
         <RefreshControl
           refreshing={refreshing}
           onRefresh={onRefresh}
-          size={'large'}
           progressBackgroundColor={'#FFF'}
         />
       }
@@ -104,11 +106,12 @@ const styles = StyleSheet.create({
   categories: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: ms(20)
+    width: windowWidth,
+    paddingHorizontal: ms(12),
   },
   category: {
     height: ms(120),
-    width: ms(164),
-    resizeMode: 'contain'
+    width: windowWidth / 2.2,
+    resizeMode: 'contain',
   }
 })
