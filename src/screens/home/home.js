@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, Image, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Image, RefreshControl, ScrollView, StyleSheet, Text, View, StatusBar } from 'react-native'
 import { ms } from 'react-native-size-matters'
 
 //Icons
@@ -50,6 +50,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor={"#FFF"} />
       <ScrollView
         refreshControl={
           <RefreshControl
@@ -61,7 +62,7 @@ export default function Home() {
         showsVerticalScrollIndicator={false}>
         <View>
           <Text style={styles.welcome}>
-            Selamat Datang
+            Selamat Datang 😊
           </Text>
           <Text style={styles.name}>
             Semoga harimu cerah!
@@ -71,7 +72,7 @@ export default function Home() {
           <Image source={Sample} style={styles.headerImage} />
         </View>
         <View style={styles.containerMenu}>
-          <Menu source={IC_Video} title={"Smart Edu"} onPress={() => Navigation.navigate('IntroEdu')} />
+          <Menu source={IC_Video} title={"Smart Edu"} onPress={() => Navigation.navigate('Course')} />
           <Menu source={IC_Plant} title={"Smart Plant"} onPress={() => Navigation.navigate('SmartPlant')} />
           <Menu source={IC_Tool} title={"Smart Kit"} onPress={() => Navigation.navigate('SmartKit')} />
           <Menu source={IC_Maps} title={"Smart Maps"} onPress={() => Navigation.navigate('SmartMaps')} />
@@ -121,7 +122,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     // paddingHorizontal: ms(14),
-    marginBottom: ms(70)
+    marginBottom: ms(70),
   },
   header: {
     paddingHorizontal: ms(14),
@@ -131,8 +132,10 @@ const styles = StyleSheet.create({
   },
   welcome: {
     paddingHorizontal: ms(14),
-    fontSize: ms(12),
-    paddingTop: ms(20)
+    fontSize: ms(13),
+    paddingTop: ms(20),
+    color: '#609966',
+    fontWeight: '700'
   },
   name: {
     paddingHorizontal: ms(14),

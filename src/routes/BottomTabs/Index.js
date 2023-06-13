@@ -17,13 +17,13 @@ const Tab = createBottomTabNavigator();
 
 export default function BottomTab() {
   return (
-    <Tab.Navigator screenOptions={{
+    <Tab.Navigator sceneContainerStyle={{ backgroundColor: '#FFF' }} screenOptions={{
       tabBarStyle: {
         height: ms(54),
         position: 'absolute',
         bottom: ms(20),
         borderRadius: ms(16),
-        marginHorizontal: ms(12)
+        marginHorizontal: ms(12),
       },
       tabBarShowLabel: false,
     }}>

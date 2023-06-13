@@ -14,7 +14,7 @@ export default function DetailVideo({ route }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#FFF' }}>
-      <Navbar text={title} />
+      <Navbar text={"Detail"} />
       <View style={styles.container}>
         <YoutubePlayer
           height={300}

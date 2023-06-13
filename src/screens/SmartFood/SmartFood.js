@@ -6,7 +6,6 @@ import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 import { ms } from 'react-native-size-matters'
 import Navbar from '../../components/Navbar/Navbar'
 
-import IL_Siram from '../../assets/ilustrasi/siram.png'
 import Product from '../../components/Product/Product'
 import Promo from '../../components/promo/promo'
 
@@ -49,7 +48,7 @@ export default function SmartFood() {
         progressBackgroundColor={'#FFF'}
         tintColor={'#FFF'}
       />}>
-      <Navbar source={IL_Siram} text={"Smart Food"} />
+      <Navbar text={"Smart Food"} />
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <Promo source={Smoothies} />
         <Promo source={Fruit} />

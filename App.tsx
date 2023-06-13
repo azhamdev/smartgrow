@@ -6,9 +6,10 @@ import 'react-native-gesture-handler';
 import BottomTab from './src/routes/BottomTabs/Index';
 import Praktik from './src/screens/Category-Course/Praktik';
 import Teori from './src/screens/Category-Course/Teori';
+import Detail from './src/screens/Detail/Detail';
 import DetailVideo from './src/screens/DetailVideo/DetailVideo';
-import IntroEdu from './src/screens/Edu/Intro';
 import Edu from './src/screens/Edu/edu';
+import IntroClean from './src/screens/SmartClean/Intro';
 import SmartClean from './src/screens/SmartClean/SmartClean';
 import SmartEvent from './src/screens/SmartEvent/SmartEvent';
 import SmartFood from './src/screens/SmartFood/SmartFood';
@@ -17,8 +18,6 @@ import SmartMaps from './src/screens/SmartMaps/SmartMaps';
 import SmartPlant from './src/screens/SmartPlant/SmartPlant';
 import SmartTech from './src/screens/SmartTech/SmartTech';
 import Home from './src/screens/home/home';
-import IntroClean from './src/screens/SmartClean/Intro';
-import Detail from './src/screens/Detail/Detail';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -36,13 +35,8 @@ export default function App() {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Edu"
+          name="Course"
           component={Edu}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="IntroEdu"
-          component={IntroEdu}
           options={{headerShown: false}}
         />
         <Stack.Screen

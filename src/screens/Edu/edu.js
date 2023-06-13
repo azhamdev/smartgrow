@@ -14,7 +14,6 @@ import {
 import { ms } from 'react-native-size-matters'
 
 // ilustrasi
-import IL_Farm from '../../assets/ilustrasi/farmHouse.png'
 import IL_Praktik from '../../assets/ilustrasi/praktik.png'
 import IL_Teori from '../../assets/ilustrasi/teori.png'
 
@@ -58,7 +57,7 @@ export default function Edu() {
         />
       }
     >
-      <Navbar source={IL_Farm} text={"Smart Edu"} />
+      <Navbar text={"Smart Edu"} />
       <View style={styles.categories}>
         <TouchableOpacity onPress={() => Navigation.navigate('PraktikEdu')}>
           <Image source={IL_Praktik} style={styles.category} />
